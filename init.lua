@@ -19,14 +19,14 @@ redshift.timer = timer({ timeout = 60 })
 redshift.dim = function()
     if redshift.method == "randr"
     then
-        awful.spawn.with_shell(redshift.redshift .. " -m randr -o " .. redshift.options)
+        awful.spawn.with_shell(redshift.redshift .. " -m randr -P -o " .. redshift.options)
     elseif redshift.method == "vidmode"
     then
         local screens = screen.count()
         for i = 0, screens - 1
         do
             awful.spawn.with_shell(redshift.redshift .. " -m vidmode:screen=" .. i ..
-                             " -o " .. redshift.options)
+                             "-P -o " .. redshift.options)
         end
     end
     redshift.state = 1
